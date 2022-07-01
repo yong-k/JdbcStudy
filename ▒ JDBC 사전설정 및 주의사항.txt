@@ -1,0 +1,80 @@
+■■■ JDBC 사전설정 및 주의사항 ■■■
+
+Q. 왜 jar파일 자체를 경로에 지정했을까?
++) ~.jar 
+   => 자바 기준으로 압축
+   ~.war
+   => 웹 기준으로 압축
+   해 놓은거라 경로 지정할 때도 확장자이름까지 넣어줌
+=> zip파일도 아닌데 그냥 그 파일 자체 압축을 푼다고 하면 압축이 풀림
+
+
+○ 해당 워크스테이션에 오라클이 설치된 경우 (◀ 우리의 학습 환경)
+
+   - 시스템의 classpath 를 다음과 같이 생성 및 변경
+
+     (11g Express Edition 설치 경로가 c:\oraclexe 인 경우...)
+     .;C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar
+
+	-고급시스템설정 > 시스템 속성 > 환경변수 
+	> 시스템 변수 > 새로만들기 > 
+	변수이름 : classpath
+	변수값: .;C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar
+	그리고 classpath 더블클릭해서 들어오면 (환경변수편집)
+	.
+	c\~~~
+	이렇게 2개 있음	> 확인 > 확인 > 확인
+
+     (10g Enterprise Edition / Standard Edition 설치 경로가 c:\oracle 인 경우...)
+     .;c:\oracle\product\10.x.x\db_x\jdbc\lib\ojdbc14.jar
+  
+
+	
+○ 해당 워크스테이션에 오라클이 설치되어 있지 않은 경우 (◀ 실무 환경)
+		   => 실무에서는 각자의 pc에 오라클 설치해서 쓰지 않음
+
+   - Oracle 용 JDBC 드라이버를 다운로드 해야 한다.
+
+     가. 다운로드 경로
+	 ① https://www.oracle.com/database/technologies/appdev/jdbc.html 로 이동
+	 ② 페이지 중간에 Get Started 항목의 JDBC Download 버튼 클릭
+	    → https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html
+	 ③ 현재 (2022년 3월 21일 기준) ojdbc6.jar 파일에 대한 다운로드 항목 제공하지 않음. 
+	    대신 『ojdbc8.jar』 항목 다운로드 진행하면 된다.
+
+     나. 파일명
+         『ojdbc8.jar』 또는 『ojdbc11.jar』 파일
+
+     다. 시스템의 classpath 에 변수값으로 ojdbc6.jar(또는 ojdbc8.jar 또는 ojdbc11.jar)
+         파일 추가(경로 포함) → 방법은 위에서 해본 환경변수 설정과 동일
+
+
+
+※ 공통
+
+   - JDBC 드라이버 설치를 위한 ojdbc6.jar 파일을 
+     다음의 경로에 복사&붙여넣기
+
+     가. C:\Program Files\Java\jdk1.8.0_311\jre\lib\ext
+     나. C:\Program Files\Java\jre1.8.0_311\lib\ext
+
+
+※ 추후 JSP 실습을 위한 추가 설정
+   - 웹 서버에서 실질적으로 Oracle 용 JDBC 드라이버를 찾는 경로는
+     『아파치톰캣루트\lib』이기 때문에... 『ojdbc6.jar』파일을
+     이 경로에 복사&붙여넣기 한다.
+
+   - 아파치 톰캣 다운로드 경로 → http://tomcat.apache.org/
+     톰캣 버전 뭘로 받아야 할 지는 jdk 버전에 따라 받으면 된다.
+
+
+
+
+
+
+
+
+
+
+
+
