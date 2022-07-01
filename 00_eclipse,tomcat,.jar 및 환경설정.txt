@@ -1,0 +1,129 @@
+
+
+--○ 이클립스 설치 및 환경설정
+
+- ECLIPSE 설치 (ZIP파일 다운)
+이클립스 버전 되게 다양함
+이클립스는 크게 2가지 유형 있음
+	(압축해서 사용하는 것과 
+	 install 형태로 pc에 설치해서 쓰는게 있다.)
+기존에 쓰던 이클립스가 pc에 설치되어 있을 수 있고, 
+
+- 분할압축 준 거 중에
+첫번째 파일만 압축 풀기
+--> 압축 폴더 이름 eclipse.vo1 말고 eclipse 로 변경하고
+--> 복사해서 c드라이브에 붙여넣기
+>> 만약 정상적으로 풀리지 않으면 클릭해서 경로 지정해서 풀기
+>> [선택된 폴더 하위에 압축파일명으로 폴더 생성 ] 체크!
+>> C 드라이브 선택
+>> [확인] 버튼 클릭해서 압축풀기 진행
+--> 압축 폴더 이름 eclipse.vo1 말고 eclipse 로 변경
+
+eclipse 폴더 들어갔더니 또 eclipse 폴더 있으면
+ctrl+x해서 c드라이브에 ctrl+v 하면 -> 중첩되어있지 않음
+
+eclipsec.exe 
+eclipse.exe 있는데
+우리는 이제 eclipse.exe 눌러서 실행하면 됨
+
+eclipse.exe 클릭 > 워크시트지정창 뜸 > D드라이브에 jdbcstudy 선택하고
+>> 아래 use this as the default and do not ask again  선택하지 말기!!
+   실무에서도 선택하지 않음
+   여러창 띄어놓고 작업할 때마다 다른 곳에 저장할 수도 있으므로 !
+>> launch
+>> always show welcome at start up 체크 하지 말기
+	workbench 눌러도 되고 그냥 welcome 탭 닫아도 됨
+
+-- 이클립스 설정 변경
+>> window > preferences > general 
+	> 수업하는 동안에는 appearance에서 dark테마로 바꾸지 말기!!
+	> appearance > colors and fonts > basic 아래에 text font 있음
+		> text font 선택하고 edit 클릭
+		> @ 붙어있는거 선택하면 한글나오면 글자 누워서 나옴
+		> 나눔고딕코딩 클릭하고 크기 설정하고 > apply
+	> workspace > text file encoding > other > utf-8 > apply
+
+>> preferences > java
+	> code style > formatter > new...
+		> profile name : jdbc_standard > ok 
+		> 추가로 대화창 뜸 	
+		> brace positions 
+		> 우측에 조그만 체크 클릭 
+			> next line 으로 한 번에 다 바꾸기
+		> array initializer 만 same line으로 바꾸기
+		> apply > ok
+	> compiler > 1.8 나오는지 확인
+	> apply and close
+
+이클립스 왼편 상단에 open perspective > java 클릭하고 open
+java ee 하고 열게되면 왼편에 
+package explorer 가 아니라 project explorer 가 열려있음
+그런데 난 순수하게 지금 자바로만 개발할거야 라고 선택하면
+package explorer 로 바뀜
+
+jdbc만 잠깐 거치면 ee로 넘어갈 거임
+근데 우리가 se기반할 때 이클립스 사용했던게 아니라
+jdbc는 일단 java ee가 아니라, java perspective 로 시작할거임!
+
+package explorer > create a java project
+> project name : JDBC01 > finish
+
+그럼 package에 jdbc01이라는 패키지가 하나 있음
+> jdbc01 > src > new > package
+	name : com.test	> finish
+
+com.test에서 오른쪽클릭 > new > class
+	name : Test001	> finish
+
+- 우리가 쓰는 이클립스를 ide라고 함
+  통합개발환경(IDE) : 조금 더 편하게 개발할 수 있는 환경 만들어줌
+
+- 레이아웃 지금은 가급적 닫지말고
+  test001.java 더블클릭하면 전체화면 됐다가, 다시 더블클릭하면 작아짐
+	(sqldevelper와 동일)
+	==> window > show view 에서 열 수 있는데 종류 엄청 많음
+
+- 앞으로 공부하는 거 90%는 다 eclipse에서 진행하게 될 거임
+
+- main 입력하고 ctrl+space 누르고 enter 치면 main 메소드 자동만들어줌
+- 이클립스로 넘어온 순간 이제 한땀한땀 치는 거 no
+  이클립스 단축키, 기능 최대한 활용해야 함!!!!
+
+- editplus에서는 ctrl+1 눌러서 실행, ctrl+2 눌러서 컴파일했었음
+
+-고급시스템설정 > 시스템 속성 > 환경변수 
+	> 시스템 변수 > 새로만들기 > 
+	변수이름 : classpath
+	변수값: .;C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar
+	그리고 classpath 더블클릭해서 들어오면 (환경변수편집)
+	.
+	c\~~~
+	이렇게 2개 있음	> 확인 > 확인 > 확인
+
+
+- ojdbc.jar6 복사해서 d드라이브 downloads 에 [09_~] 폴더에 붙여넣기 함
+	=> 쌤은 c드라이브에 했는데;;,,,,흠
+0) 우리가 만들었던 downloads 폴더에 [09~] 만들어서 거기에 붙여넣기
+1) c드라이브 > program files > java > jdk1.8.0_311 > jre > lib > ext ==> 여기에도 붙여넣기
+2) c드라이브 > program files > java > jre1.8.0_311 > jre > lib > ext ==> 여기에도 붙여넣기
+
+
+
+--○ apache-tomcat 준비
+-apache-tomcat zip으로 받고 downloads 폴더에 받아줌
+ 압축풀고 apache-tomcat 안에 있는 apache-tomcat 복사해서 c 드라이브 루트에 붙여넣기 !
+ jodbc6.jar 파일을 
+ c드라이브 >  apache-tomcat > lib 안에 붙여넣기!
+
+
+
+--○ 실무에서 ojdbc__.jar 파일은
+oracle.sun.com
+> 검색창 :  jdbc
+> jdbc drivers > jdbc download 들어가면
+버전에 맞는거 받으면 됨
+
+
+
+
+
